@@ -4,11 +4,27 @@ let add = function(a,b) {
 };
 
 let subtract = (a,b) => a-b;
-let multiplication = (a,b) => a*b;
-let division = (a,b) => a/b; 
+let multiply = (a,b) => a*b;
+let divide = (a,b) => a/b; 
+
+/*calculator parameters */
+let firstNumber = 2;
+let secondNumber = 3;
+let operator = 'add';
+let result = 0;
+
+const operate = function(a,operation,b) {
+    if (operation == 'add') {
+       add(a,b);
+   } else if (operation = 'subtract') {
+       subtract(a,b);
+   } else if (operation = 'multiply') {
+       multiply(a,b);
+   } else if (operation = 'divide') {
+       divide(a,b);
+   } else {
+       alert("Please enter a proper operation");
+   }
+};
 
 
-console.log(add(3,6));
-console.log(subtract(3,6));
-console.log(multiplication(3,6));
-console.log(division(3,6));
