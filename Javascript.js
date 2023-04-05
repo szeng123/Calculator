@@ -10,21 +10,23 @@ let divide = (a,b) => a/b;
 /*calculator parameters */
 let firstNumber = 2;
 let secondNumber = 3;
-let operator = 'add';
+let operator = '+';
 let result = 0;
 
 const operate = function(a,operation,b) {
-    if (operation == 'add') {
-       add(a,b);
-   } else if (operation = 'subtract') {
-       subtract(a,b);
-   } else if (operation = 'multiply') {
-       multiply(a,b);
-   } else if (operation = 'divide') {
-       divide(a,b);
-   } else {
-       alert("Please enter a proper operation");
-   }
+    switch (operation) {
+        case '+':
+            return add(a,b);
+        case '-':
+            return subtract(a,b);
+        case '*':
+            return multiply(a,b);
+        case '/':
+            return divide(a,b);
+        default:
+            alert('please enter an operator!');
+            break;
+    };
 };
 
 
