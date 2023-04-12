@@ -30,9 +30,10 @@ body {
     padding: 10px;
     background-color: white;
     font-size: 300%;
+
 }
 
-.buttons#first-row-buttons {
+.buttonRows#first-row-buttons {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -47,13 +48,13 @@ body {
 
 }
 
-.buttons {
+.buttonRows {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
 }
 
-span {
+.button {
     border-color: black;
     border-style: solid;
     border-radius: 1px;
@@ -61,5 +62,5 @@ span {
     width: 100px;
     margin: 5px 10px;
     text-align: center;
-    word-wrap: break-word;
+    padding: 10px;
 }

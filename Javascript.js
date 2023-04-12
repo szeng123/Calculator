@@ -29,4 +29,15 @@ const operate = function(a,operation,b) {
     };
 };
 
+/* Number and operation functions */
 
+const buttons = document.getElementsByClassName('button'); // select calculator buttons 
+const display = document.getElementById('current-results'); // select calculator display area
+
+const buttonPressed = e => {    // event to capture value of button press
+    display.innerHTML = e.target.textContent;
+}
+
+for (let button of buttons) {
+    button.addEventListener('click', buttonPressed);
+}
