@@ -32,12 +32,27 @@ const operate = function(a,operation,b) {
 /* Number and operation functions */
 
 const buttons = document.getElementsByClassName('button'); // select calculator buttons 
-const display = document.getElementById('current-results'); // select calculator display area
+const displayValue = document.getElementById('current-results'); // select calculator display area
 
-const buttonPressed = e => {    // event to capture value of button press
-    display.innerHTML = e.target.textContent;
+const numberButtons = document.getElementsByClassName('number-button'); 
+
+let x = 0; // counter for array elements
+const numberArray = []; // initialize empty array 
+numberArray.length = 17; //calculator display size limit
+
+const updateDisplay = e => {    // event to update 2nd row calculator display (limit of 17 digits)
+    if (x < numberArray.length) {
+    numberArray[x] = e.target.textContent;
+    x++;
+    displayValue.innerHTML = concatenateNumbers(numberArray);
+    };
 }
 
-for (let button of buttons) {
-    button.addEventListener('click', buttonPressed);
+
+function concatenateNumbers(numbers) {
+    return numbers.join('');
+}
+
+for (let button of numberButtons) {
+    button.addEventListener('click', updateDisplay);
 }
