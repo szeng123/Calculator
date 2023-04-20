@@ -31,16 +31,17 @@ const operate = function(a,operation,b) {
 
 /* Number and operation functions */
 
-const buttons = document.getElementsByClassName('button'); // select calculator buttons 
+const buttons = document.getElementsByClassName('button'); // select all calculator buttons 
 const displayValue = document.getElementById('current-results'); // select calculator display area
 
-const numberButtons = document.getElementsByClassName('number-button'); 
+const numberButtons = document.getElementsByClassName('number-button'); // select calculator number buttons
+const operatorButtons = document.getElementsByClassName('oper')
 
 let x = 0; // counter for array elements
 const numberArray = []; // initialize empty array 
 numberArray.length = 17; //calculator display size limit
 
-const updateDisplay = e => {    // event to update 2nd row calculator display (limit of 17 digits)
+const updateLowerDisplay = e => {    // event to update 2nd row calculator display (limit of 17 digits)
     if (x < numberArray.length) {
     numberArray[x] = e.target.textContent;
     x++;
@@ -48,11 +49,11 @@ const updateDisplay = e => {    // event to update 2nd row calculator display (l
     };
 }
 
-
 function concatenateNumbers(numbers) {
     return numbers.join('');
 }
 
 for (let button of numberButtons) {
-    button.addEventListener('click', updateDisplay);
+    button.addEventListener('click', updateLowerDisplay);
 }
+
