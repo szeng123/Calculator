@@ -8,10 +8,11 @@ let multiply = (a,b) => a*b;
 let divide = (a,b) => a/b; 
 
 /*calculator parameters */
-let firstNumber = 2;
-let secondNumber = 3;
+
+let firstNumber = '';
+let secondNumber = '';
 let operator = '+';
-let result = 0;
+let result = '';
 
 const operate = function(a,operation,b) {
     switch (operation) {
@@ -31,29 +32,29 @@ const operate = function(a,operation,b) {
 
 /* Number and operation functions */
 
-const buttons = document.getElementsByClassName('button'); // select all calculator buttons 
-const displayValue = document.getElementById('current-results'); // select calculator display area
+const buttons = document.querySelector('button'); // select all calculator buttons 
+const lowerDisplay = document.getElementById('lowerDisplay'); // select lower calculator display area
+const upperDisplay = document.getElementById('upperDisplay'); // select upper calculator display area
 
+const clearAction = document.getElementById('clear');
+const deleteAction = document.getElementById('delete');
+const equalsAction = document.getElementById('equalSign');
+
+// syntax to generate operands
 const numberButtons = document.getElementsByClassName('number-button'); // select calculator number buttons
-const operatorButtons = document.getElementsByClassName('oper')
 
-let x = 0; // counter for array elements
-const numberArray = []; // initialize empty array 
-numberArray.length = 17; //calculator display size limit
+for (let button of numberButtons) {  //loop through all numbers
+    button.addEventListener('click', e => appendNumber(e.target.textContent));
+};
 
-const updateLowerDisplay = e => {    // event to update 2nd row calculator display (limit of 17 digits)
-    if (x < numberArray.length) {
-    numberArray[x] = e.target.textContent;
-    x++;
-    displayValue.innerHTML = concatenateNumbers(numberArray);
-    };
-}
+function appendNumber(number) {
+    if (number === '.' && lowerDisplay.textContent.includes('.')) return //do nothing if number already contains decimal
+    else if (lowerDisplay.textContent.length > 16) return //do nothing if length of number exceeds digits displayed
+    else if (lowerDisplay.textContent === '0' && number !== '.'){  // changes from zero to digit if number is pressed
+        lowerDisplay.textContent = number.toString();
+    } else {
+    lowerDisplay.textContent = lowerDisplay.textContent.toString() + number.toString();
+    }
+};
 
-function concatenateNumbers(numbers) {
-    return numbers.join('');
-}
-
-for (let button of numberButtons) {
-    button.addEventListener('click', updateLowerDisplay);
-}
-
+// syntax to determine operator
