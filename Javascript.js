@@ -11,7 +11,7 @@ let divide = (a,b) => a/b;
 
 let firstNumber = '';
 let secondNumber = '';
-let operator = '+';
+let operator = '';
 let result = '';
 
 const operate = function(a,operation,b) {
@@ -40,6 +40,10 @@ const clearAction = document.getElementById('clear');
 const deleteAction = document.getElementById('delete');
 const equalsAction = document.getElementById('equalSign');
 
+const firstOperand = document.getElementById('firstOperand');
+const displayOperator = document.getElementById('operator');
+const secondOperand = document.getElementById('secondOperand');
+
 // syntax to generate operands
 const numberButtons = document.getElementsByClassName('number-button'); // select calculator number buttons
 
@@ -54,7 +58,17 @@ function appendNumber(number) {
         lowerDisplay.textContent = number.toString();
     } else {
     lowerDisplay.textContent = lowerDisplay.textContent.toString() + number.toString();
-    }
-};
+    }};
 
 // syntax to determine operator
+const operatorButtons = document.getElementsByClassName('operator-button'); // select operator buttons 
+
+for (let button of operatorButtons) {
+    button.addEventListener('click', e => chooseOperator(e.target.textContent));
+};
+
+function chooseOperator(operator) {
+    if (operator !== null ) operate(); // if operator is declared with first and second operand, calculate result instead
+    firstOperand.textContent = lowerDisplay.textContent;
+    displayOperator.textContent = operator.toString();
+}
