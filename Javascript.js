@@ -167,3 +167,5 @@ function backspace(button) {
     } else 
     lowerDisplay.textContent = lowerDisplay.textContent.slice(0,-1);
 };
+
+
